@@ -507,7 +507,7 @@ tuner_M1 = kt.BayesianOptimization(
     objective='val_loss',
     max_trials=max_trials_num,
     executions_per_trial=executions_per_trial_num,
-    directory='hyper_tuning_0405',
+    directory='hyper_tuning',
     project_name='M1_tuning',
     overwrite=False
 )
@@ -644,7 +644,7 @@ tuner_M2 = kt.BayesianOptimization(
     objective='val_loss',
     max_trials=max_trials_num,
     executions_per_trial=executions_per_trial_num,
-    directory='hyper_tuning_0405',
+    directory='hyper_tuning',
     project_name='M2_tuning',
     overwrite=False
 )
@@ -845,7 +845,7 @@ tuner_M3 = kt.BayesianOptimization(
     objective='val_loss',
     max_trials=max_trials_num,
     executions_per_trial=executions_per_trial_num,
-    directory='hyper_tuning_0405',
+    directory='hyper_tuning',
     project_name='M3_tuning',
     overwrite=False
 )
