@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" role="img" aria-labelledby="title description">
+  <title id="title">Pave-ML training and evaluation workflow</title>
+  <desc id="description">A verified physical-section mapping creates one global train, validation and test split. Training data fits shared scalers. M1 learns IRI, M2 transfers to RD with frozen shared and IRI layers, and M3 fine-tunes IRI, RD and PCI. Validation selects models and held-out test groups provide final evaluation.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1 9 5 1 9Z" fill="#4a8f7b"/></marker></defs>
+  <rect x="1" y="1" width="1198" height="538" rx="18" fill="#f3f8f5" stroke="#d6e6dc"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="36" y="39" fill="#153c32" font-size="20" font-weight="700">Data preparation and model evaluation</text>
+    <text x="36" y="65" fill="#587668" font-size="13">Physical road sections stay in the same partition across every data source and training stage.</text>
+    <g stroke="#bfd8c9" fill="#ffffff">
+      <rect x="36" y="91" width="265" height="98" rx="10"/>
+      <rect x="351" y="91" width="408" height="98" rx="10"/>
+      <rect x="809" y="91" width="355" height="98" rx="10"/>
+    </g>
+    <text x="54" y="116" fill="#44735e" font-size="10" font-weight="700" letter-spacing="1.4">01 / IDENTIFY</text>
+    <text x="54" y="143" fill="#153c32" font-size="17" font-weight="700">Physical-section mapping</text>
+    <text x="54" y="168" fill="#587668" font-size="12">Source + sequence ID → physical group</text>
+    <text x="369" y="116" fill="#44735e" font-size="10" font-weight="700" letter-spacing="1.4">02 / SPLIT ONCE</text>
+    <text x="369" y="143" fill="#153c32" font-size="17" font-weight="700">Train 70% · Validation 15% · Test 15%</text>
+    <text x="369" y="168" fill="#587668" font-size="12">Global group assignment · seed 2022</text>
+    <text x="827" y="116" fill="#44735e" font-size="10" font-weight="700" letter-spacing="1.4">03 / FIT ON TRAIN ONLY</text>
+    <text x="827" y="143" fill="#153c32" font-size="17" font-weight="700">Fixed feature and target scalers</text>
+    <text x="827" y="168" fill="#587668" font-size="12">Reuse the fitted transforms in all partitions</text>
+    <path d="M305 140H340" fill="none" stroke="#4a8f7b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M763 140H798" fill="none" stroke="#4a8f7b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M986 189V216H206V242" fill="none" stroke="#4a8f7b" stroke-width="2" marker-end="url(#arrow)"/>
+    <g stroke="#b9d4c4">
+      <rect x="36" y="252" width="340" height="137" rx="12" fill="#e6f2e8"/>
+      <rect x="430" y="252" width="340" height="137" rx="12" fill="#e1f1ec"/>
+      <rect x="824" y="252" width="340" height="137" rx="12" fill="#e3f0f3"/>
+    </g>
+    <text x="56" y="279" fill="#44735e" font-size="10" font-weight="700" letter-spacing="1.5">M1 / PRETRAIN</text>
+    <text x="56" y="312" fill="#153c32" font-size="24" font-weight="700">Learn IRI</text>
+    <text x="56" y="339" fill="#426353" font-size="13">Train shared representation + IRI branch</text>
+    <text x="56" y="364" fill="#426353" font-size="12">Select using IRI validation data</text>
+    <text x="450" y="279" fill="#44735e" font-size="10" font-weight="700" letter-spacing="1.5">M2 / TRANSFER</text>
+    <text x="450" y="312" fill="#153c32" font-size="24" font-weight="700">Add RD</text>
+    <text x="450" y="339" fill="#426353" font-size="13">Freeze shared / IRI layers; train RD</text>
+    <text x="450" y="364" fill="#426353" font-size="12">Select using RD validation data</text>
+    <text x="844" y="279" fill="#3e6c73" font-size="10" font-weight="700" letter-spacing="1.5">M3 / FINE-TUNE</text>
+    <text x="844" y="312" fill="#153c32" font-size="24" font-weight="700">IRI + RD + PCI</text>
+    <text x="844" y="339" fill="#426353" font-size="13">Jointly optimize the three task branches</text>
+    <text x="844" y="364" fill="#426353" font-size="12">Select using multi-task validation data</text>
+    <path d="M380 320H419" fill="none" stroke="#4a8f7b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M774 320H813" fill="none" stroke="#4a8f7b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M994 389V423" fill="none" stroke="#4a8f7b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="36" y="433" width="1128" height="74" rx="10" fill="#123c32"/>
+    <text x="57" y="463" fill="#b2e6cd" font-size="11" font-weight="700" letter-spacing="1.5">FINAL EVALUATION</text>
+    <text x="57" y="486" fill="#d1e5db" font-size="12">Held-out physical sections</text>
+    <text x="330" y="464" fill="#f1faf5" font-size="16" font-weight="700">Restore selected weights → predict → invert scaling → report metrics</text>
+    <text x="330" y="487" fill="#bdd8c9" font-size="12">RMSE · MAE · R² · MAPE for IRI, RD and PCI</text>
+  </g>
+</svg>

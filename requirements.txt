@@ -1,0 +1,7 @@
+numpy==1.26.4
+scikit-learn==1.6.1
+matplotlib==3.10.1
+joblib==1.4.2
+keras==3.9.0
+keras-tuner==1.4.7
+keras-tcn==3.5.6

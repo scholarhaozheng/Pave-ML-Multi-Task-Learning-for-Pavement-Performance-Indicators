@@ -1,0 +1,10 @@
+source,id,group
+iri,IRI_A_CONTIG_1,section_A
+iri,IRI_A_CONTIG_2,section_A
+iri,IRI_B_CONTIG_1,section_B
+rd,RD_A_CONTIG_1,section_A
+rd,RD_B_CONTIG_1,section_B
+rd,RD_C_CONTIG_1,section_C
+multi,MULTI_A_CONTIG_1,section_A
+multi,MULTI_B_CONTIG_1,section_B
+multi,MULTI_C_CONTIG_1,section_C

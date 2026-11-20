@@ -1,0 +1,31 @@
+# Local datasets and physical-section mappings
+txt_csv/
+data/
+group_map.csv
+*.joblib
+
+# Training outputs and checkpoints
+runs/
+hyper_tuning*/
+results_images*/
+*.keras
+*.h5
+*.hdf5
+*.ckpt*
+*.log
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

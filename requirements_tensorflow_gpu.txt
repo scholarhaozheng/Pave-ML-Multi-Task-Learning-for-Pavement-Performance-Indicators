@@ -1,0 +1,3 @@
+# NVIDIA GPU support requires Linux or WSL2 for TensorFlow 2.16.
+-r requirements.txt
+tensorflow[and-cuda]==2.16.2
